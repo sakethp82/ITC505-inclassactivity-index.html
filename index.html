@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Shop - Sweet Treats</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0e6d6; /* Very Light Beige */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #a2c9f2; /* Light Blue */
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        main {
+            padding: 30px 20px;
+            background-color: #ffffff; /* White background for content */
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #4fa3f7; /* Light blue color */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        footer {
+            background-color: #a2c9f2; /* Light Blue */
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #ffcc99; /* Soft orange */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            width: 50%;
+            border-radius: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button:hover {
+            background-color: #f79c42; /* Light goldish-orange */
+        }
+
+        input {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+            border: 2px solid #f79c42; /* Light goldish-orange */
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Cake Image Styles */
+        .cake-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .cake-image:hover {
+            transform: scale(1.1);
+        }
+
+        /* Centering the input and button */
+        input, button {
+            margin: 0 auto;
+            display: block;
+            max-width: 400px;
+        }
+
+        /* Button Color Change Section */
+        #colorButton {
+            background-color: #8a2be2; /* Violet */
+            color: white;
+            border-radius: 5px;
+            width: 50%;
+            margin: 0 auto;
+            display: block;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Aligning sections and labels */
+        .section-content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto 10px; /* Added margin for spacing between label and input */
+        }
+
+        /* Order Section Enhancements */
+        .order-section {
+            text-align: left; /* Aligns the section content to the left */
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Feedback Section Enhancements */
+        .feedback-section {
+            text-align: left; /* Aligns the feedback section to the left */
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Cake Shop - Sweet Treats</h1>
+            <p>Delicious cakes baked fresh every day!</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="image-section">
+            <h2>Our Special Cakes</h2>
+            <img src="https://i.pinimg.com/736x/15/60/3f/15603fa09ab0399b1b0f7bc564680e6d.jpg" alt="Chocolate Cake" class="cake-image" id="cake1">
+        </section>
+
+        <section class="color-change-section">
+            <h2>Click to Change Button Color</h2>
+            <div class="section-content">
+                <button id="colorButton">Click me to change color</button>
+            </div>
+        </section>
+
+        <section class="order-section">
+            <h2>Order Your Cake</h2>
+            <label for="userInput">Please enter your cake flavor or custom message:</label>
+            <input type="text" id="userInput" placeholder="Enter cake flavor or message">
+            <button onclick="submitText()">Submit Order</button>
+        </section>
+
+        <section class="feedback-section">
+            <h2>Feedback</h2>
+            <label for="feedbackInput">We'd love to hear your thoughts!</label>
+            <input type="text" id="feedbackInput" placeholder="Your feedback">
+            <button onclick="submitFeedback()">Submit Feedback</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Cake Shop - Sweet Treats. All rights reserved.</p>
+        <p>Last updated: <span id="lastModified"></span></p>
+    </footer>
+
+    <script>
+        // Roll-over effect on cake image
+        document.getElementById('cake1').addEventListener('mouseover', function() {
+            this.style.transform = "scale(1.1)";
+        });
+
+        document.getElementById('cake1').addEventListener('mouseout', function() {
+            this.style.transform = "scale(1)";
+        });
+
+        // Color change on button click - smooth transition
+        document.getElementById('colorButton').addEventListener('click', function() {
+            let colors = [
+                '#8a2be2', /* Violet */
+                '#4b0082', /* Indigo */
+                '#0000ff', /* Blue */
+                '#008000', /* Green */
+                '#ffff00', /* Yellow */
+                '#ff7f00', /* Orange */
+                '#ff0000'  /* Red */
+            ];
+
+            // Select a random color from the colors array
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            this.style.backgroundColor = randomColor;
+        });
+
+        // Text input form submission for cake order
+        function submitText() {
+            var userInput = document.getElementById('userInput').value;
+
+            // If-Else condition to check if input is empty
+            if (userInput.trim() === "") {
+                alert("Please enter a cake flavor or message.");
+            } else {
+                alert("Thank you for your order! You entered: " + userInput);
+            }
+        }
+
+        // Text input form submission for feedback
+        function submitFeedback() {
+            var feedbackInput = document.getElementById('feedbackInput').value;
+
+            // If-Else condition to check if feedback is empty
+            if (feedbackInput.trim() === "") {
+                alert("Please enter your feedback.");
+            } else {
+                alert("Thank you for your feedback! You said: " + feedbackInput);
+            }
+        }
+
+        // Display last modified date
+        document.getElementById('lastModified').textContent = document.lastModified;
+    </script>
+</body>
+</html>
